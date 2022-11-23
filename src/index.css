@@ -1,8 +1,8 @@
 body {
-  background-image: url('./image/bbb.jpeg');
+  background-image: url('./image/aaaa.avif');
   background-repeat: no-repeat;
   background-size: cover;
-  
+
 
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,4 +15,39 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+#HomepageHeader {
+background-color:tan;
+
+}
+
+#HomepageTitle {
+  padding-left: 38rem;
+  color: black;
+}
+
+#company {
+  text-align: center;
+
+}
+#comBTN {
+  color: red;
+  font-size: xx-large;
+  padding-top: 15rem;
+  padding-left: 2rem;
+text-align: center;
+  box-sizing: content-box;
+
+  
+}
+#input-form {
+  text-align: center;
+  padding-top: 5rem;
+}
+
+#submit-btn {
+  color:white;
+  background-color: red;
 }

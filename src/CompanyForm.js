@@ -1,0 +1,75 @@
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+function CompanyForm({ companies, setCompanies }) {
+  const [compName, setCompName] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+console.log(companies)
+  function onSubmitHandler(e) {
+    e.preventDefault();
+    const newComp = {
+      company_name: compName,
+      state: state,
+      city: city,
+    };
+  
+
+    fetch("http://localhost:9292/companies", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newComp),
+    })
+      .then(r => r.json())
+      .then(nComp => {
+        setCompanies([...companies, nComp]);
+      });
+    }
+
+  return (
+    <div id="input-form">
+      <Box
+        component="form"
+        onSubmit={onSubmitHandler}
+        sx={{
+          "& > :not(style)": { m: 1, width: "25ch" },
+        }}
+        
+      >
+        <TextField
+          id="outlined-basic"
+          placeholder="Company"
+          value={compName}
+          onChange={e => setCompName(e.target.value)}
+          variant="outlined"
+        />
+        <br></br>
+        <TextField
+          id="outlined-basic"
+          placeholder="State"
+          value={state}
+          onChange={e => setState(e.target.value)}
+          variant="outlined"
+        />
+        <br></br>
+        
+        <TextField
+          id="outlined-basic"
+          placeholder="City"
+          value={city}
+          onChange={e => setCity(e.target.value)}
+          variant="outlined"
+        />
+<br></br>
+        <Button type="submit" id="submit-btn" variant="contained">
+          Submit
+        </Button>
+      </Box>
+    </div>
+  );
+}
+
+export default CompanyForm;
