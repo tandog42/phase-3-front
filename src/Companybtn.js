@@ -1,9 +1,8 @@
 import { Button } from "@mui/material";
 import React from "react";
-import CompanyForm from "./CompanyForm";
 
 
-function Companybtn({ companies, setCompanies }) {
+function Companybtn({ companies}) {
  
   return (
     <div id="company">
@@ -12,7 +11,7 @@ function Companybtn({ companies, setCompanies }) {
           {company.company_name}
         </Button>
       ))}
-      <CompanyForm companies={companies} setCompanies={setCompanies} />
+     
     </div>
   );
 }

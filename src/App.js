@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Companybtn from "./Companybtn";
 import Header from "./Header";
+import Home from "./Home";
 function App() {
   const [companies, setCompanies] = useState([]);
 
@@ -15,9 +15,14 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Companybtn companies={companies} setCompanies={setCompanies} />
+      <Home companies={companies} setCompanies={setCompanies} />
     </div>
   );
 }
 
+
+//import routes
+//setup routes for each component/ setup path
+//passed state down to company comp
+//
 export default App;

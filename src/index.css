@@ -35,7 +35,8 @@ background-color:tan;
 #comBTN {
   color: red;
   font-size: xx-large;
-  padding-top: 15rem;
+  margin-top: 15rem;
+  padding-top: 2rem;
   padding-left: 2rem;
 text-align: center;
   box-sizing: content-box;
