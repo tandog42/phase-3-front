@@ -52,7 +52,8 @@ text-align: center;
   color:white;
   background-color: red;
 }
-#companyTitle {
+#companyHeader {
+  font-size: 300%;
   text-align: center;
-  
+  color: green;
 }
