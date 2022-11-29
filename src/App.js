@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
+import { Route, Routes } from "react-router-dom";
+import Company from "./Company";
+
 import Home from "./Home";
 function App() {
   const [companies, setCompanies] = useState([]);
@@ -14,8 +16,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Home companies={companies} setCompanies={setCompanies} />
+     
+      <Routes>
+      <Route path = "/" element={<Home companies={companies} setCompanies={setCompanies} />}/>
+      <Route path="/company/:id" element={<Company  companies={companies} setCompanies={setCompanies}/>} />
+      
+      </Routes>
     </div>
   );
 }
