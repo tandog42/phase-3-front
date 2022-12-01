@@ -6,7 +6,7 @@ function CompanyForm({ companies, setCompanies }) {
   const [compName, setCompName] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
-console.log(companies)
+
   function onSubmitHandler(e) {
     e.preventDefault();
     const newComp = {
@@ -30,7 +30,7 @@ console.log(companies)
     }
 
   return (
-    <div id="input-form">
+    <div id="company-input-form">
       <Box
         component="form"
         onSubmit={onSubmitHandler}
@@ -46,7 +46,8 @@ console.log(companies)
           onChange={e => setCompName(e.target.value)}
           variant="outlined"
         />
-        <br></br>
+        <br>
+        </br>
         <TextField
           id="outlined-basic"
           placeholder="State"
