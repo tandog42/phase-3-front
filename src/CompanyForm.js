@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+
 function CompanyForm({ companies, setCompanies }) {
   const [compName, setCompName] = useState("");
   const [state, setState] = useState("");

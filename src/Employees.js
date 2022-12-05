@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 
-function Employees({ companies, setCompanies }) {
+function Employees() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [position, setPosition] = useState("");
@@ -60,7 +60,7 @@ function Employees({ companies, setCompanies }) {
         </tbody>
       </table>
       <h2>Add a Employee</h2>
-      <form onSubmit={onSubmitHandler}>
+      <form id="newEmployeeForm" onSubmit={onSubmitHandler}>
         <input
           type="text"
           value={firstName}
