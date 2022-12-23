@@ -86,7 +86,7 @@ td {
   background-color: rgb(205, 235, 253);
 }
 
-form {
+#newEmployeeForm {
   display: flex;
   gap: 5px;
 }
