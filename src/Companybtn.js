@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 function Companybtn({ companies }) {
 
-    const cc = companies.map(comp => {
-      comp.employees.filter(c => console.log(c.company_id))
-    })
+    // const cc = companies.map(comp => {
+    //   comp.employees.filter(c => console.log(c.company_id))
+    // })
    
    
  
