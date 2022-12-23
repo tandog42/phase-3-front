@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
-
-function Employees() {
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditRow from "./EditRow";
+import { useParams } from "react-router-dom";
+function Employees({ comp, companies, setCompanies }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [position, setPosition] = useState("");
   const [salary, setSalary] = useState("");
-  const [employee, setEmployee] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:9292/employees")
-      .then(r => r.json())
-      .then(allemployees => {
-        setEmployee(allemployees);
-      });
-  }, []);
+  const [employees, setEmployees] = useState(comp.employees);
+  const [editEmployee, setEditEmployee] = useState(null);
+  let { id } = useParams();
 
   function onSubmitHandler(e) {
     e.preventDefault();
@@ -23,6 +19,7 @@ function Employees() {
       last_name: lastName,
       position: position,
       salary: salary,
+      company_id: id,
     };
     fetch("http://localhost:9292/employees", {
       method: "POST",
@@ -33,32 +30,51 @@ function Employees() {
     })
       .then(r => r.json())
       .then(newEmp => {
-        setEmployee([...employee, newEmp]);
+        const companiesNotChanging = companies.filter(
+          company => company.id !== newEmp.company_id
+        );
+        const changingCompany = companies.filter(
+          company => company.id === newEmp.company_id
+        )[0];
+        changingCompany.employees.push(newEmp);
+        setCompanies([...companiesNotChanging, changingCompany]);
       });
   }
+  const handleEditClick = (e, employees) => {
+    e.preventDefault();
+    setEditEmployee(employees.id);
+  };
 
   return (
     <div className="employee-container">
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Position</th>
-            <th>Salary</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employee.map(emp => (
+      <form>
+        <table>
+          <thead>
             <tr>
-              <td>{emp.first_name}</td>
-              <td>{emp.last_name}</td>
-              <td>{emp.position}</td>
-              <td>${emp.salary}</td>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Position</th>
+              <th>Salary</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {employees.map(emp => (
+              <>
+                {editEmployee === emp.id ? (
+                  <EditRow key={emp.id} emp={emp} />
+                ) : (
+                  <ReadOnlyRow
+                    key={emp.id}
+                    handleEditClick={handleEditClick}
+                    emp={emp}
+                  />
+                )}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </form>
       <h2>Add a Employee</h2>
       <form id="newEmployeeForm" onSubmit={onSubmitHandler}>
         <input
