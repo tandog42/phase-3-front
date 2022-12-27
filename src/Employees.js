@@ -62,7 +62,7 @@ function Employees({ comp, companies, setCompanies }) {
             {employees.map(emp => (
               <>
                 {editEmployee === emp.id ? (
-                  <EditRow key={emp.id} emp={emp} />
+                  <EditRow key={emp.id} emp={emp} setEmployees={setEmployees} />
                 ) : (
                   <ReadOnlyRow
                     key={emp.id}
