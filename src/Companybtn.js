@@ -4,14 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Companybtn({ companies }) {
-
-    // const cc = companies.map(comp => {
-    //   comp.employees.filter(c => console.log(c.company_id))
-    // })
-   
-   
- 
-
+  //mapping through companies and creating a button for each company
   return (
     <div id="company">
       {companies.map(company => (
