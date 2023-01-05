@@ -6,7 +6,6 @@ function EditRow({
   emp,
   setEditEmployee,
   setEmployees,
-  employees,
 }) {
   const [first_name, setFirstName] = useState(emp.first_name);
   const [last_name, setLastName] = useState(emp.last_name);
@@ -21,7 +20,6 @@ function EditRow({
     position: position,
     salary: salary,
   };
- 
 
   function editEmployeeOnSubmit(e) {
     e.preventDefault();

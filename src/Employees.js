@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import ReadOnlyRow from "./ReadOnlyRow";
 import EditRow from "./EditRow";
 import { useParams } from "react-router-dom";
+
 function Employees({ comp, companies, setCompanies }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -39,7 +40,12 @@ function Employees({ comp, companies, setCompanies }) {
         changingCompany.employees.push(newEmp);
         setCompanies([...companiesNotChanging, changingCompany]);
       });
+    setFirstName("");
+    setLastName("");
+    setPosition("");
+    setSalary("");
   }
+
   const handleEditClick = (e, employees) => {
     e.preventDefault();
     setEditEmployee(employees.id);
@@ -65,7 +71,6 @@ function Employees({ comp, companies, setCompanies }) {
                   <EditRow
                     setCompanies={setCompanies}
                     companies={companies}
-                    employees={employees}
                     key={emp.id}
                     emp={emp}
                     setEmployees={setEmployees}
@@ -74,6 +79,8 @@ function Employees({ comp, companies, setCompanies }) {
                 ) : (
                   <ReadOnlyRow
                     key={emp.id}
+                    employees={employees}
+                    setEmployees={setEmployees}
                     handleEditClick={handleEditClick}
                     emp={emp}
                   />
