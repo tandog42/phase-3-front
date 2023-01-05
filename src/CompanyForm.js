@@ -15,7 +15,6 @@ function CompanyForm({ companies, setCompanies }) {
       state: state,
       city: city,
     };
-  
 
     fetch("http://localhost:9292/companies", {
       method: "POST",
@@ -28,7 +27,7 @@ function CompanyForm({ companies, setCompanies }) {
       .then(nComp => {
         setCompanies([...companies, nComp]);
       });
-    }
+  }
 
   return (
     <div id="company-input-form">
@@ -38,7 +37,6 @@ function CompanyForm({ companies, setCompanies }) {
         sx={{
           "& > :not(style)": { m: 1, width: "25ch" },
         }}
-        
       >
         <TextField
           id="outlined-basic"
@@ -47,8 +45,7 @@ function CompanyForm({ companies, setCompanies }) {
           onChange={e => setCompName(e.target.value)}
           variant="outlined"
         />
-        <br>
-        </br>
+        <br></br>
         <TextField
           id="outlined-basic"
           placeholder="State"
@@ -57,7 +54,7 @@ function CompanyForm({ companies, setCompanies }) {
           variant="outlined"
         />
         <br></br>
-        
+
         <TextField
           id="outlined-basic"
           placeholder="City"
@@ -65,7 +62,7 @@ function CompanyForm({ companies, setCompanies }) {
           onChange={e => setCity(e.target.value)}
           variant="outlined"
         />
-<br></br>
+        <br></br>
         <Button type="submit" id="submit-btn" variant="contained">
           Submit
         </Button>
