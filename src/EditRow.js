@@ -1,36 +1,69 @@
 import React, { useState } from "react";
 
-function EditRow({ emp, setEmployees }) {
-  const [firstName, setFirstName] = useState(emp.first_name);
-  const [lastName, setLastName] = useState(emp.last_name);
-  const [salary, setSalary] = useState(emp.salary);
+function EditRow({
+  companies,
+  setCompanies,
+  emp,
+  setEditEmployee,
+  setEmployees,
+  employees,
+}) {
+  const [first_name, setFirstName] = useState(emp.first_name);
+  const [last_name, setLastName] = useState(emp.last_name);
   const [position, setPosition] = useState(emp.position);
+  const [salary, setSalary] = useState(emp.salary);
+  console.log(first_name, last_name, position, salary);
 
-  const editFormData = {
-    first_name: firstName,
-    last_name: lastName,
-    salary: salary,
+  const newFormData = {
+    id: emp.id,
+    first_name: first_name,
+    last_name: last_name,
     position: position,
+    salary: salary,
   };
+ 
 
   function editEmployeeOnSubmit(e) {
     e.preventDefault();
+
     fetch(`http://localhost:9292/employees/${emp.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(editFormData),
+      body: JSON.stringify(newFormData),
     })
-    .then(r=> r.json())
-    .then(editedEmployee => console.log(editedEmployee));
+      .then(r => r.json())
+      .then(newData => {
+        const newCompanies = companies.map(company => {
+          if (company.id === newData.company_id) {
+            const companyEmployees = company.employees.map(employee => {
+              if (employee.id === newData.id) {
+                return newData;
+              } else {
+                return employee;
+              }
+            });
+            setEmployees(companyEmployees);
+
+            company.employees = companyEmployees;
+            return company;
+          } else {
+            return company;
+          }
+        });
+
+        setCompanies(newCompanies);
+      });
+
+    setEditEmployee(null);
   }
 
   return (
     <tr key={emp.id}>
       <td>
         <input
-          value={firstName}
+          value={first_name}
           type="text"
           required="required"
           placeholder="First Name..."
@@ -40,7 +73,7 @@ function EditRow({ emp, setEmployees }) {
       </td>
       <td>
         <input
-          value={lastName}
+          value={last_name}
           type="text"
           required="required"
           placeholder="Last Name..."
@@ -69,9 +102,7 @@ function EditRow({ emp, setEmployees }) {
         ></input>
       </td>
       <td>
-        <button onSubmit={editEmployeeOnSubmit} type="submit">
-          Save
-        </button>
+        <button onClick={editEmployeeOnSubmit}>Save</button>
       </td>
     </tr>
   );

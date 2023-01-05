@@ -14,7 +14,7 @@ function App() {
       });
   }, []);
 
-//passing down State to Home component and the Company Component.
+
   return (
     <div className="App">
      
