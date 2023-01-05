@@ -62,7 +62,15 @@ function Employees({ comp, companies, setCompanies }) {
             {employees.map(emp => (
               <>
                 {editEmployee === emp.id ? (
-                  <EditRow key={emp.id} emp={emp} setEmployees={setEmployees} />
+                  <EditRow
+                    setCompanies={setCompanies}
+                    companies={companies}
+                    employees={employees}
+                    key={emp.id}
+                    emp={emp}
+                    setEmployees={setEmployees}
+                    setEditEmployee={setEditEmployee}
+                  />
                 ) : (
                   <ReadOnlyRow
                     key={emp.id}
@@ -75,6 +83,7 @@ function Employees({ comp, companies, setCompanies }) {
           </tbody>
         </table>
       </form>
+
       <h2>Add a Employee</h2>
       <form id="newEmployeeForm" onSubmit={onSubmitHandler}>
         <input
