@@ -8,13 +8,13 @@ function Employees({ comp, companies, setCompanies }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [position, setPosition] = useState("");
-  const [salary, setSalary] = useState("");
+  const [salary, setSalary] = useState();
   const [employees, setEmployees] = useState(comp.employees);
   const [editEmployee, setEditEmployee] = useState(null);
   let { id } = useParams();
 
   function onSubmitHandler(e) {
-    e.preventDefault();
+     e.preventDefault();
     const newEmployee = {
       first_name: firstName,
       last_name: lastName,
