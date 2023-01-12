@@ -10,7 +10,7 @@ function CompanyForm({ companies, setCompanies }) {
 
   function onSubmitHandler(e) {
     e.preventDefault();
-    const newComp = {
+    const newCompany = {
       company_name: compName,
       state: state,
       city: city,
@@ -21,11 +21,14 @@ function CompanyForm({ companies, setCompanies }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newComp),
+      body: JSON.stringify(newCompany),
     })
       .then(r => r.json())
-      .then(nComp => {
-        setCompanies([...companies, nComp]);
+      .then(newSubmittedCompany => {
+        const employeeArray = { employees: [] };
+        const fullObj = Object.assign(newSubmittedCompany, employeeArray);
+
+        setCompanies([...companies, fullObj]);
       });
   }
 
