@@ -2,13 +2,16 @@ import React from "react";
 import Companybtn from "./Companybtn";
 import CompanyForm from "./CompanyForm";
 import Header from "./Header";
-function Home({ companies, setCompanies }) {
-  // Passing down State to CompanyBTN and CompanyForm
+function Home({ setEmployees, companies, setCompanies }) {
   return (
     <div>
       <Header />
       <Companybtn companies={companies} />
-      <CompanyForm companies={companies} setCompanies={setCompanies} />
+      <CompanyForm
+        setEmployees={setEmployees}
+        companies={companies}
+        setCompanies={setCompanies}
+      />
     </div>
   );
 }
