@@ -9,7 +9,7 @@ function ReadOnlyRow({ employees, setEmployees, emp, handleEditClick }) {
     fetch(`http://localhost:9292/employees/${emp.id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "apllication/json",
+        "Content-Type": "application/json",
       },
     });
   }
