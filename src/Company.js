@@ -1,7 +1,8 @@
 import React from "react";
 
 import { useParams } from "react-router-dom";
-import Employees from "./Employees";
+import NewEmployeeForm from "./NewEmployeeForm";
+
 
 function Company({ companies, setCompanies }) {
   let { id } = useParams();
@@ -11,7 +12,7 @@ function Company({ companies, setCompanies }) {
   return comp ? (
     <div>
       <h1 id="companyHeader">{comp.company_name}</h1>
-      <Employees
+      <NewEmployeeForm
         comp={comp}
         companies={companies}
         setCompanies={setCompanies}
