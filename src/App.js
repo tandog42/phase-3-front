@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Company from "./Company";
-
 import Home from "./Home";
+
 function App() {
   const [companies, setCompanies] = useState([]);
-  //Fetching all the companies with nested employees array
+  
   useEffect(() => {
     fetch("http://localhost:9292/companies")
       .then(r => r.json())
@@ -14,6 +14,7 @@ function App() {
       });
   }, []);
 
+  
   return (
     <div className="App">
       <Routes>
