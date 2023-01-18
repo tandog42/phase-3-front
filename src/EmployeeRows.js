@@ -25,26 +25,26 @@ function EmployeeRows({ employees, setEmployees, setCompanies, companies }) {
           </thead>
           <tbody>
             {employees.map(emp => (
-              <>
-                {editEmployee === emp.id ? (
+             
+                editEmployee === emp.id ? (
                   <EditRow
                     setCompanies={setCompanies}
                     companies={companies}
-                    key={emp}
+                    key={emp.id}
                     emp={emp}
                     setEmployees={setEmployees}
                     setEditEmployee={setEditEmployee}
                   />
                 ) : (
                   <ReadOnlyRow
-                    key={emp}
+                    key={emp.id}
                     employees={employees}
                     setEmployees={setEmployees}
                     handleEditClick={handleEditClick}
                     emp={emp}
                   />
-                )}
-              </>
+                )
+           
             ))}
           </tbody>
         </table>

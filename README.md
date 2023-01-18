@@ -25,6 +25,8 @@ Below you will find a quick walkthrough on how to navigate through this simple b
 
 ![Edit/Delete](https://media.giphy.com/media/Fz7ko3OU10PtDOVhuK/giphy.gif)
 
-- A user can also choose to add a new employee.
+- A user can also choose to add a new employee by inputing there Name, Position and Salary.
 
 ![AddingEmployee](https://media.giphy.com/media/iM3OLpp9iFgbOJdQMj/giphy.gif)
+
+
